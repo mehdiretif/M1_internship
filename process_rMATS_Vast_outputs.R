@@ -130,44 +130,31 @@ setdiff(intersect(list_genes_MXE_SE, EX.vast$GENE),intersect(rmats_SE_wthout_dup
 
 #EX events from the inclusion table
 
-final_INCLUSION_FILE.DIFF <- read.delim("~/stage/vast/results/nf_results/final_INCLUSION_FILE.DIFF.txt")
+final_INCLUSION_FILE.DIFF <- read.delim("~/stage/vast/results/INCLUSION_LEVELS_FULL-hg19-6.tab")
 
 EX_raw_inclusion_file.DIFF <- final_INCLUSION_FILE.DIFF[grep("EX",final_INCLUSION_FILE.DIFF$EVENT),]
-EX_raw_inclusion_file.DIFF <- EX_raw_inclusion_file.DIFF[EX_raw_inclusion_file.DIFF$coordinate !="",] 
+EX_raw_inclusion_file.DIFF <- EX_raw_inclusion_file.DIFF[EX_raw_inclusion_file.DIFF$COORD !="",] 
 nrow(EX_raw_inclusion_file.DIFF) #nombre d'EX detectable
-write.table(x = EX_raw_inclusion_file.DIFF, file="~/stage/vast/results/nf_results/EX_raw_inclusion_file.DIFF.txt", sep = "\t", quote = FALSE, row.names=FALSE)
+#write.table(x = EX_raw_inclusion_file.DIFF, file="~/stage/vast/results/nf_results/EX_raw_inclusion_file.DIFF.txt", sep = "\t", quote = FALSE, row.names=FALSE)
 
-#plots 
+#plot
 
 histo_table <- data.frame(
-  event = c("A3SS","A5SS","RI","SE|EX","SE+MXE|EX"),
+  event = c("A3SS","A5SS","RI","ES|EX","ES+MXE|EX"),
   rMATS = c(rmats_summary_table[-5,1],(rmats_summary_table[4,1]+rmats_summary_table[5,1])),
   VAST = c(vast_summary_table[,1],vast_summary_table[4,1])
 )
 histo_table <- histo_table %>% pivot_longer(!event, names_to="splicing_tool", values_to="number_of_events")
 
-histo1 <-ggplot(data = histo_table) +
+pdf(file = "~/stage/events_histo.pdf")
+histo <-ggplot(data = histo_table) +
   #ggtitle("Number of differential alternative splicing events \n identified according to the tool used")+
   geom_bar(aes(x = event, y = number_of_events, fill = splicing_tool),stat = "identity", position="dodge")+
   scale_x_discrete(name = "Alternative splicing patterns")+
   scale_y_continuous(name = "Number of differential alternative splicing events")+
   scale_fill_discrete(name = "Splicing tool", labels = c("rMATS","Vast-tools"))
-print(histo1)
+print(histo)
+dev.off()
 
 
-final_histo_table <-data.frame(
-  event = c("SE|EX","SE+MXE|EX"),
-  rMATS = c(final_rmats_summary[4,1],(final_rmats_summary[4,1]+final_rmats_summary[5,1])),
-  VAST = c(vast_summary_table[4,1], vast_summary_table[4,1])
-)
-
-final_histo_table <- final_histo_table %>% pivot_longer(!event, names_to="splicing_tool", values_to="number_of_events")
-
-histo2 <-ggplot(data = final_histo_table) +
-  #ggtitle("Number of differential alternative splicing events identified \n according to the tool used after duplicates elimination")+
-  geom_bar(aes(x = event, y = number_of_events, fill = splicing_tool),stat = "identity", position="dodge")+
-  scale_x_discrete(name = "Alternative splicing patterns")+
-  scale_y_continuous(name = "Number of differential alternative splicing events")+
-  scale_fill_discrete(name = "Splicing tool", labels = c("rMATS","Vast-tools"))
-print(histo2)
 
