@@ -2,16 +2,18 @@
 
 ### Options
 
---reads '/path/to/read/files' \
---db '/path/to/VASTDB' \
---groups '/path/to/file/containing/insights/about/samples' (refer the groups.txt file) \
---groupA 'conditionA' \
---groupB 'conditionB' \
---gen_ref 'genome_reference' \
---cores 'number_of_cores' \
---paired 'yes'(paired-sequencing) or 'no' \
---output '/path/to/output/directory' \
- 
+```
+    --reads     '/path/to/read/files' \
+    --db        '/path/to/VASTDB' \
+    --groups    '/path/to/file/containing/insights/about/samples' (refer the groups.txt file) \
+    --groupA    'conditionA' \
+    --groupB    'conditionB' \
+    --gen_ref   'genome_reference' \
+    --cores     'number_of_cores' \
+    --paired    'yes'(paired-sequencing) or 'no' \
+    --output    '/path/to/output/directory'
+``` 
+
 The databases are available on the [vast-tools github](https://github.com/vastgroup/vast-tools).
 
 ### Example
