@@ -56,9 +56,8 @@ def vast_to_dico(path_vast):
                 new_A = A + deltaA
                 new_B = B + deltaB
                 new_coord=f"{chr}:{new_A}-{new_B}"
-                dico_ex[gene][event_ID].append(new_coord)
-                
-    return len(dico_ex['GLI4']['HsaEX6082696'])
+                dico_ex[gene][event_ID].append(new_coord)         
+    return dico_ex
 
 def common_event_research(path_vast, path_rmats):
     dico_se=parsing_se_rmats(path_rmats)
@@ -86,15 +85,8 @@ def create_common_rmats_vast_file(path_vast, path_rmats, output):
             new_file.write(gene +"\t" + event_info[0] + "\t" + event_info[1] + "\t" + event_info[2] + "\n")
     new_file.close()
                 
-
-            
-
-#print(parsing_se_rmats("rmats/SE_significant.MATS.JC.txt"))
-print(vast_to_dico("../vast/results/nf_results/EX_significant.txt"))
-#print(common_event_research("vast/results/nf_results/EX_significant.txt", "rmats/SE_significant.MATS.JC.txt"))
-
-#create_common_rmats_vast_file("vast/results/nf_results/EX_raw_inclusion_file.DIFF.txt", "rmats/SE_significant.MATS.JC.txt","common_events_based_non_significant_vast.txt")
-
-#create_common_rmats_vast_file("vast/results/nf_results/EX_significant.txt", "rmats/SE_significant.MATS.JC.txt","common_events.txt")
+        
+create_common_rmats_vast_file("/home/mehdi/stage/results/vast-tools/EX_significant.txt", "/home/mehdi/stage/results/rmats/SE_significant.MATS.JC.txt","/home/mehdi/stage/results/common_events.txt")
+create_common_rmats_vast_file("/home/mehdi/stage/results/vast-tools/VASTDB_EX.txt", "/home/mehdi/stage/results/rmats/SE_significant.MATS.JC.txt","/home/mehdi/stage/results/raw_common_events.txt")
 
 
