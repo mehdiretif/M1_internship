@@ -5,7 +5,7 @@
 ```
     --reads     '/path/to/read/files' \
     --db        '/path/to/VASTDB' \
-    --groups    '/path/to/file/containing/insights/about/samples' (refer the groups.txt file) \
+    --groups    '/path/to/file/containing/insights/about/samples' (refer to the groups.txt file) \
     --groupA    'conditionA' \
     --groupB    'conditionB' \
     --gen_ref   'genome_reference' \
