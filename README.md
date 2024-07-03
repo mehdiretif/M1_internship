@@ -2,7 +2,7 @@
 
 ### Options
 
---reads '/path/to/reads' \
+--reads '/path/to/read/files' \
 --db '/path/to/VASTDB' \
 --groups '/path/to/file/containing/insights/about/samples' (refer the groups.txt file) \
 --groupA 'conditionA' \
