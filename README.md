@@ -1,7 +1,7 @@
-#Vast-tools Nextflow script options
+# Vast-tools Nextflow pipeline
 
 --reads '/path/to/reads'
---db '/path/to/VASTDB'
+--db '/path/to/VASTDB' (DataBase available [here](https://github.com/vastgroup/vast-tools))
 --groups '/path/to/file/containing/insights/about/samples' (refer the groups.txt file)
 --groupA 'conditionA'
 --groupB 'conditionB'
@@ -10,6 +10,7 @@
 --paired 'yes'(paired-sequencing)/'no'
 --output '/path/to/output/directory'
  
+
 
 example: 
 
