@@ -19,7 +19,7 @@ The databases are available on the [vast-tools github](https://github.com/vastgr
 ### Example
 
 ```
-nextflow run /Xnfs/abc/nf_scratch/mmarchand/vast_projet/vast_tools.nf 
+nextflow run /Xnfs/abc/nf_scratch/mmarchand/vast_projet/vast_tools.nf \
 -profile psmn \
 -c /Xnfs/abc/nf_scratch/mmarchand/vast_projet/nextflow.config \
 --reads '/Xnfs/abc/nf_scratch/mmarchand/vast_projet/trimmed_fastq_test/*_R{1,2}_cutadapt_match.fastq.gz' \
