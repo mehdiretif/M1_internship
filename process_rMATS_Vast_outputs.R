@@ -6,8 +6,11 @@ library(tidyr)
 
 #############################
 path_to_rmats_raw_results_directory <- "~/stage/rmats/"
-path_to_vast_out <- "~/stage/vast/vast_out/"
-output_path <- "~/stage/results/" 
+path_to_vast_out <- "~/stage/vast/vast_out_hg38/"
+output_path <- "~/stage/results_hg38/" 
+reference_genome <- "hg38"
+number_of_sample <- "6" #total from all the conditions
+conserve_events_without_coordinates <- "yes" #("yes"/"no") WARNING: if "yes", the identify_common_events.py script can encounter errors. 
 #############################
 
 dir.create(file.path(output_path, "rmats"), recursive = TRUE)
@@ -81,6 +84,9 @@ raw_vast_all <- read.delim(paste0(path_to_vast_out,"final_INCLUSION_FILE.DIFF.tx
 
 vast_all <- raw_vast_all[!is.na(raw_vast_all$MV.dPsi._at_0.95),] #lines with NA suppression
 vast_all <- vast_all[vast_all$MV.dPsi._at_0.95>=0.1,]
+if(conserve_events_without_coordinates=="no"){
+  vast_all <- vast_all[vast_all$coordinate !="",]
+}
 
 event_vast <- c("ALTA","ALTD","INT","EX")
 event_type <- c()
@@ -133,7 +139,7 @@ write.table(x = vast_summary_table, file=paste0(output_path, "vast_summary.tab")
 
 #EX events from the inclusion table
 
-combine_table <- read.delim(paste0(path_to_vast_out, "vast_out/INCLUSION_LEVELS_FULL-hg19-6.tab"))
+combine_table <- read.delim(paste0(path_to_vast_out, "vast_out/INCLUSION_LEVELS_FULL-",reference_genome,"-", number_of_sample,".tab"))
 
 EX_raw_inclusion_file.DIFF <- combine_table[grep("EX",combine_table$EVENT),]
 all_EX_events <- raw_vast_all[raw_vast_all$EVENT %in% EX_raw_inclusion_file.DIFF$EVENT,]
@@ -144,7 +150,7 @@ write.table(x = all_EX_events, file=paste0(output_path,"vast-tools/VASTDB_EX.txt
 detectable_EX_events <- nrow(EX_raw_inclusion_file.DIFF) 
 
 res <- c(paste0(rmats_DAS, " differentially alternatively spliced genes detected by rMATS"), 
-         paste0(DAS_vast, " differentially spliced genes detected by Vast-tools"),
+         paste0(DAS_vast, " differentially alternatively spliced genes detected by Vast-tools"),
          paste0(detectable_EX_events, " alternative exon skipping events are annotated in VASTDB"))
 
 writeLines(res, paste0(output_path,"complementary_insights.txt"))

@@ -1,7 +1,7 @@
 #common event  
 
 ##################
-path <- "~/stage/results/"
+path <- "~/stage/results_hg19/"
 ##################
 
 common_events <- read.delim(paste0(path,"common_events.txt"))
@@ -9,7 +9,6 @@ common_raw_events <- read.delim(paste0(path, "raw_common_events.txt"))
 EX.vast <- read.delim(paste0(path, "vast-tools/EX_significant.txt"))
 VastDB_EX <- read.delim(paste0(path, "vast-tools/VASTDB_EX.txt"))
 all_SE_significant_rmats <- read.delim(paste0(path, "rmats/SE_significant.MATS.JC.txt"))
-
 
 common_events <- merge(common_events, EX.vast[, c("EVENT", "coordinate","diff")], by.x = "Vast_ID", by.y = "EVENT", all.x = TRUE)
 common_raw_events <- merge(common_raw_events, VastDB_EX[, c("EVENT", "coordinate")], by.x = "Vast_ID", by.y = "EVENT", all.x = TRUE)

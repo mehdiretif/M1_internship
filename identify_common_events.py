@@ -89,4 +89,6 @@ def create_common_rmats_vast_file(path_vast, path_rmats, output):
                 
         
 create_common_rmats_vast_file(sys.argv[1]+"/vast-tools/EX_significant.txt", sys.argv[1]+"/rmats/SE_significant.MATS.JC.txt", sys.argv[1]+"/common_events.txt")
+create_common_rmats_vast_file(sys.argv[1]+"/vast-tools/VASTDB_EX.txt", sys.argv[1]+"/rmats/SE_significant.MATS.JC.txt", sys.argv[1]+"/raw_common_events.txt")
+
 #create_common_rmats_vast_file("/home/mehdi/stage/results/vast-tools/EX_significant.txt", "/home/mehdi/stage/results/rmats/SE_significant.MATS.JC.txt","/home/mehdi/stage/results/common_events.txt")
