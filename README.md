@@ -53,10 +53,10 @@ rMATS detects exon skipping (ES), mutually exclusive exons (MXE), retained intro
 The tools are described in more detail in the M1-MEMOIRE-Marchand_Mehdi_2023-2024.pdf.
 
 Four tables can be found in the result directory:  
-    - rmats_summary.tab: number of differential alternative splicing (DAS) events and differentially alternatively spliced (DAS) genes according to the type of alternative splicing event.  
-    - final_rmats_summary.tab: rmats_summary.tab without strict duplicates (events with strictly the same alternative exon coordinates).  
-    - vast_summary.tab: number of DAS events and DAS genes according to the type of alternative splicing event.  
-    - common_summary.tab: number of differentially alternatively spliced (DAS) genes identified by both tools.
+  - rmats_summary.tab: number of differential alternative splicing (DAS) events and differentially alternatively spliced (DAS) genes according to the type of alternative splicing event.  
+  - final_rmats_summary.tab: rmats_summary.tab without strict duplicates (events with strictly the same alternative exon coordinates).  
+  - vast_summary.tab: number of DAS events and DAS genes according to the type of alternative splicing event.  
+  - common_summary.tab: number of differentially alternatively spliced (DAS) genes identified by both tools.
 
 These results are illustrated in the events_histo.pdf. 
 
