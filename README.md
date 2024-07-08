@@ -50,6 +50,7 @@ Finally, the **process_rMATS_Vast_outputs.R** use the python script outputs to q
 ### Results
 
 rMATS detects exon skipping (ES), mutually exclusive exons (MXE), retained intron (RI), alternative 5' and 3' splice sites (A5SS and A3SS) alternative splicing events. In other hand, Vast-tools detects and groups the ES, microexon skipping (MIC in event_type column) and MXE patterns into alternative exon skipping (EX) events. The RI, A5SS and A3SS patterns are also detected by the toolset. 
+The tools are described in more detail in the M1-MEMOIRE-Marchand_Mehdi_2023-2024.pdf.
 
 Four tables can be found in the result directory: \n
     - rmats_summary.tab: number of differential alternative splicing (DAS) events and differentially alternatively spliced (DAS) genes according to the type of alternative splicing event. \n
@@ -60,7 +61,6 @@ Four tables can be found in the result directory: \n
 These results are illustrated in the events_histo.pdf. 
 
 ![DAS_plot](https://github.com/mehdiretif/M1_internship/blob/main/image/example_events_histo.png)
-
 
 
 The common_events.txt file corresponds to the rMATS differential ES events identified by both tools. In other hand, the raw_common_events.txt file corresponds to the rMATS differential ES events annotated in VASTDB (according to the human genome version). **WARNING: some duplicates are present in these files due to rMATS results redundancy**. These files were obtained through the **identify_common_events.py** script that identify the Vast-tools events (differential ES events or ES annotated in VASTDB) that correspond to the rMATS differential ES events with a margin of alternative splicing exon coordinates of 5 nucleotides (the flanking exon coordinates are not taken into account). 
