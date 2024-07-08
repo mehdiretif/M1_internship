@@ -59,9 +59,9 @@ Four tables can be found in the result directory: \n
 
 These results are illustrated in the events_histo.pdf. 
 
-![Description de l'image](https://github.com/mehdiretif/M1_internship/blob/main/image/example_events_histo.png)
+![DAS_plot](https://github.com/mehdiretif/M1_internship/blob/main/image/example_events_histo.png)
 
-https://github.com/mehdiretif/M1_internship/blob/main/image/example_events_histo.png?raw=true
+
 
 The common_events.txt file corresponds to the rMATS differential ES events identified by both tools. In other hand, the raw_common_events.txt file corresponds to the rMATS differential ES events annotated in VASTDB (according to the human genome version). **WARNING: some duplicates are present in these files due to rMATS results redundancy**. These files were obtained through the **identify_common_events.py** script that identify the Vast-tools events (differential ES events or ES annotated in VASTDB) that correspond to the rMATS differential ES events with a margin of alternative splicing exon coordinates of 5 nucleotides (the flanking exon coordinates are not taken into account). 
 The number of differential ES events detected in common without duplicates are given in the complementary_insights.txt with some other insights. 
