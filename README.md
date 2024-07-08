@@ -58,7 +58,7 @@ Four tables can be found in the result directory:
   - vast_summary.tab: number of DAS events and DAS genes according to the type of alternative splicing event.  
   - common_summary.tab: number of differentially alternatively spliced (DAS) genes identified by both tools.
 
-These results are illustrated in the events_histo.pdf
+These results are illustrated in the events_histo.pdf.
 
 ![DAS_plot](https://github.com/mehdiretif/M1_internship/blob/main/image/example_events_histo.png)
 
