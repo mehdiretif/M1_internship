@@ -19,6 +19,6 @@ process combine_process {
 	"""
 	mkdir -p vast_out/to_combine
 	mv -t vast_out/to_combine/. $eej2 $IR2 $IR_summary $micX $MULTI3X $exskX $info
-	vast-tools combine -o ./vast_out -sp ${params.gen_ref} --cores ${params.cores} --dbDir ${params.db}
+	vast-tools combine -o ./vast_out -sp ${params.gen_ref} --cores ${params.cores} --dbDir ${params.db} -C
 	"""
 }
