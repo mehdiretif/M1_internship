@@ -6,16 +6,19 @@ log.info "reads (FASTQ file)		: ${params.reads}"
 log.info "groups (group  A : group B)	: ${params.groupA} : ${params.groupB}"
 log.info "reference genome		: ${params.gen_ref}"
 log.info "cores				: ${params.cores}"
-log.info "paired (yes/no)		: ${params.paired}"
 log.info "output (path)			: ${params.output}"
 log.info "\n"
 
-if (params.paired == "yes") {
-        params.diff_variable = "_R1_cutadapt_match"
-        }
-else {
-        params.diff_variable = "_cutadapt_match"
-        }
+
+def filename = params.reads.tokenize('/')[-1]
+
+filename = filename.replaceAll('\\{1,2\\}', '1')
+
+def pattern = /\*(.*?)\./
+
+def matcher = (filename =~ pattern)
+
+params.diff_variable = matcher[0][1]
 
 
 include { align } from './vast_nf_modules/vast_align'
