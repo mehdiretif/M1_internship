@@ -28,7 +28,6 @@ nextflow run /Xnfs/abc/nf_scratch/mmarchand/vast_projet/vast_tools.nf \
 --groupB 'siGL2' \
 --gen_ref 'hg19' \
 --cores '16' \
---paired 'yes' \
 --output '/Xnfs/abc/nf_scratch/mmarchand/vast_projet/vast_out/' 
 ```
 
