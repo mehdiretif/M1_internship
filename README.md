@@ -53,16 +53,21 @@ The module has to be performed for each pairs of fastq files.
 vast-tools combine -o /path/to/output/directory (same that for align) -sp genome_reference --cores 16 --dbDir path/to/VASTDB -C (for DE analysis)
 ```
 
-#### diff (for DAS analysis)
+#### diff
 
 ```
-vast-tools diff -a 5Y_siDDX5_17_B1_R1_cutadapt_match,5Y_siDDX5_17_B2_R1_cutadapt_match -b 5Y_siGL2_B1_R1_cutadapt_match,5Y_siGL2_B2_R1_cutadapt_match --sampleNameA=siDDX5_17 --sampleNameB=siGL2 -i path/to/INCLUSION_LEVELS.tab 
+vast-tools diff -a 5Y_siDDX5_17_B1_R1_cutadapt_match,5Y_siDDX5_17_B2_R1_cutadapt_match,5Y_siDDX5_17_B3_R1_cutadapt_match -b 5Y_siGL2_B1_R1_cutadapt_match,5Y_siGL2_B2_R1_cutadapt_match,5Y_siGL2_B3_R1_cutadapt_match --sampleNameA=siDDX5_17 --sampleNameB=siGL2 -i path/to/output/directory/INCLUSION_LEVELS.tab 
 ```
 
 *In paired-end context, the paired replicates are merged under the name of the first file (R1) in the INCLUSION_LEVELS.tab (it was not tested in with single-end datasets).
 
 **Check the name of the INCLUSION_LEVELS.tab (it depends on the genome reference and the number of replicates used). 
 
+#### compare_expr (for Differential Expression analysis)
+
+```
+vast-tools compare_expr path/to/output/directory/cRPKM_and_count_tab -a 5Y_siDDX5_17_B1_R1_cutadapt_match,5Y_siDDX5_17_B2_R1_cutadapt_match,5Y_siDDX5_17_B3_R1_cutadapt_match -b 5Y_siGL2_B1_R1_cutadapt_match,5Y_siGL2_B2_R1_cutadapt_match,5Y_siGL2_B3_R1_cutadapt_match -name_A siDDX5_17 -name_B siGL2
+```
 
 ## Comparison between Vast-tools and rMATS outputs
 
