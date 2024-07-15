@@ -39,7 +39,7 @@ The nextflow pipeline generate two final files, namely **final_INCLUSION_FILE.DI
 
 ## Command lines used to perform Differential Alternative Splicing (DAS) analysis with Vast-tools
 
-#### align (x number_of_replicates)
+#### align
 
 ```
 vast-tools align path/to/5Y_siDDX5_17_B1_R1_cutadapt_match.fastq.gz path/to/5Y_siDDX5_17_B1_R2_cutadapt_match.fastq.gz -sp genome_reference (hg19/hg38...) --dbDir path/to/VASTDB --cores 16 -o path/to/output/directory --expr (for DE analysis)
