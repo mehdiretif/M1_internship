@@ -37,21 +37,27 @@ The groups file contains the names of the fastq files as first column (example: 
 
 The nextflow pipeline generate two final files, namely **final_INCLUSION_FILE.DIFF.txt** for the differential alternative splicing analysis, and the **DiffGE.tab** for the differential expression analysis (according to the --expr option).
 
-## Command lines used to perform Differential Alternative Splicing (DAS) Analysis with Vast-tools
+## Command lines used to perform Differential Alternative Splicing (DAS) analysis with Vast-tools
 
 #### align (x number_of_replicates)
 
+```
 vast-tools align path/to/5Y_siDDX5_17_B1_R1_cutadapt_match.fastq.gz path/to/5Y_siDDX5_17_B1_R2_cutadapt_match.fastq.gz -sp genome_reference (hg19/hg38...) --dbDir path/to/VASTDB --cores 16 -o path/to/output/directory --expr (for DE analysis)
+```
 
 #### combine
 
+```
 vast-tools combine -o /path/to/output/directory (same that for align) -sp genome_reference --cores 16 --dbDir path/to/VASTDB -C (for DE analysis)
+```
 
 #### diff (for DAS analysis)
 
+```
 vast-tools diff -a 5Y_siDDX5_17_B1_R1_cutadapt_match,5Y_siDDX5_17_B2_R1_cutadapt_match -b 5Y_siGL2_B1_R1_cutadapt_match,5Y_siGL2_B2_R1_cutadapt_match --sampleNameA=siDDX5_17 --sampleNameB=siGL2 -i path/to/INCLUSION_LEVELS.tab 
+```
 
-*For paired-end fastq the paired replicates are merged under the name of the first file (R1).
+*In paired-end context, the paired replicates are merged under the name of the first file (R1) in the INCLUSION_LEVELS.tab (it was not tested in with single-end datasets).
 
 **Check the name of the INCLUSION_LEVELS.tab (it depends on the genome reference and the number of replicates used). 
 
