@@ -45,6 +45,8 @@ The nextflow pipeline generate two final files, namely **final_INCLUSION_FILE.DI
 vast-tools align path/to/5Y_siDDX5_17_B1_R1_cutadapt_match.fastq.gz path/to/5Y_siDDX5_17_B1_R2_cutadapt_match.fastq.gz -sp genome_reference (hg19/hg38...) --dbDir path/to/VASTDB --cores 16 -o path/to/output/directory --expr (for DE analysis)
 ```
 
+The module has to be performed for each pairs of fastq files. 
+
 #### combine
 
 ```
