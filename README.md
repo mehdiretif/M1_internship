@@ -11,6 +11,7 @@
     --gen_ref   'genome_reference' 
     --cores     'number_of_cores' 
     --output    '/path/to/output/directory'
+    --expr      'yes/no' (differential expression analysis)
 ``` 
 
 The databases are available on the [vast-tools github](https://github.com/vastgroup/vast-tools).
@@ -28,10 +29,32 @@ nextflow run /Xnfs/abc/nf_scratch/mmarchand/vast_projet/vast_tools.nf \
 --groupB 'siGL2' \
 --gen_ref 'hg19' \
 --cores '16' \
---output '/Xnfs/abc/nf_scratch/mmarchand/vast_projet/vast_out/' 
+--output '/Xnfs/abc/nf_scratch/mmarchand/vast_projet/vast_out/'
+--expr 'yes'
 ```
 
 The groups file contains the names of the fastq files as first column (example: 5Y_siDDX5_17_B1 for 5Y_siDDX5_17_B1_R1_cutadapt_match.fastq.gz). The second column contains condition IDs (groupA and groupB).
+
+The nextflow pipeline generate two final files, namely **final_INCLUSION_FILE.DIFF.txt** for the differential alternative splicing analysis, and the **DiffGE.tab** for the differential expression analysis (according to the --expr option).
+
+## Command lines used to perform Differential Alternative Splicing (DAS) Analysis with Vast-tools
+
+#### align (x number_of_replicates)
+
+vast-tools align path/to/5Y_siDDX5_17_B1_R1_cutadapt_match.fastq.gz path/to/5Y_siDDX5_17_B1_R2_cutadapt_match.fastq.gz -sp genome_reference (hg19/hg38...) --dbDir path/to/VASTDB --cores 16 -o path/to/output/directory --expr (for DE analysis)
+
+#### combine
+
+vast-tools combine -o /path/to/output/directory (same that for align) -sp genome_reference --cores 16 --dbDir path/to/VASTDB -C (for DE analysis)
+
+#### diff (for DAS analysis)
+
+vast-tools diff -a 5Y_siDDX5_17_B1_R1_cutadapt_match,5Y_siDDX5_17_B2_R1_cutadapt_match -b 5Y_siGL2_B1_R1_cutadapt_match,5Y_siGL2_B2_R1_cutadapt_match --sampleNameA=siDDX5_17 --sampleNameB=siGL2 -i path/to/INCLUSION_LEVELS.tab 
+
+*For paired-end fastq the paired replicates are merged under the name of the first file (R1).
+
+**Check the name of the INCLUSION_LEVELS.tab (it depends on the genome reference and the number of replicates used). 
+
 
 ## Comparison between Vast-tools and rMATS outputs
 

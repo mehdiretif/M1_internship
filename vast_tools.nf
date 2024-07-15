@@ -3,10 +3,11 @@
 log.info "VAST-TOOLS NF"
 log.info "============="
 log.info "reads (FASTQ file)		: ${params.reads}"
-log.info "groups (group  A : group B)	: ${params.groupA} : ${params.groupB}"
+log.info "groups (group  A : group B)		: ${params.groupA} : ${params.groupB}"
 log.info "reference genome		: ${params.gen_ref}"
-log.info "cores				: ${params.cores}"
+log.info "cores			: ${params.cores}"
 log.info "output (path)			: ${params.output}"
+log.info "differential expression analysis		: ${params.expr}"
 log.info "\n"
 
 
@@ -25,6 +26,7 @@ include { align } from './vast_nf_modules/vast_align'
 include { combine_process } from './vast_nf_modules/vast_combine'
 include { diff } from './vast_nf_modules/vast_diff'
 include { new_table } from './vast_nf_modules/create_file'
+include { expr } from './vast_nf_modules/vast_expr'
 
 workflow {
 	read_pairs = channel.fromFilePairs(params.reads, checkIfExists: true)
@@ -36,11 +38,18 @@ workflow {
 	ch_input_combine_IR_summary = align.out.IR_summary
 	ch_input_combine_micX = align.out.micX
 	ch_input_combine_MULTI3X = align.out.MULTI3X
+	ch_input_combine_resume = align.out.resume
+	ch_input_combine_tmp = align.out.tmp
+	ch_input_combine_bias = align.out.bias
+	ch_input_combine_cRPKM = align.out.cRPKM
 
-	combine_process(ch_input_combine_eej2.collect(),ch_input_combine_exskX.collect(),ch_input_combine_info.collect(),ch_input_combine_IR2.collect(),ch_input_combine_IR_summary.collect(),ch_input_combine_micX.collect(),ch_input_combine_MULTI3X.collect())
+	combine_process(ch_input_combine_eej2.collect(),ch_input_combine_exskX.collect(),ch_input_combine_info.collect(),ch_input_combine_IR2.collect(),ch_input_combine_IR_summary.collect(),ch_input_combine_micX.collect(),ch_input_combine_MULTI3X.collect(),ch_input_combine_resume.collect(), ch_input_combine_tmp.collect(), ch_input_combine_bias.collect(),ch_input_combine_cRPKM.collect())
 	
-	diff(combine_process.out,ch_input_combine_eej2.collect(),ch_input_combine_exskX.collect(),ch_input_combine_info.collect(),ch_input_combine_IR2.collect(),ch_input_combine_IR_summary.collect(),ch_input_combine_micX.collect(),ch_input_combine_MULTI3X.collect())
+	diff(combine_process.out.inclusion_tab,ch_input_combine_eej2.collect(),ch_input_combine_exskX.collect(),ch_input_combine_info.collect(),ch_input_combine_IR2.collect(),ch_input_combine_IR_summary.collect(),ch_input_combine_micX.collect(),ch_input_combine_MULTI3X.collect())
 
-	new_table(diff.out.diff_table,combine_process.out)
+	new_table(diff.out.diff_table,combine_process.out.inclusion_tab)
+	
+	if(params.expr=="yes")
+		expr(combine_process.out.cRPKM_and_count_tab, combine_process.out.count_tab, combine_process.out.cRPKM_tab, ch_input_combine_bias.collect(), ch_input_combine_cRPKM.collect())
 }	
 
