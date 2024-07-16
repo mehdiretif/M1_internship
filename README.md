@@ -34,6 +34,7 @@ nextflow run /Xnfs/abc/nf_scratch/mmarchand/vast_projet/vast_tools.nf \
 ```
 
 Please use ```_``` after ```*``` for the paths of the fastq files. If the directory contains more fastq files than those of interest, you can use ``` {conditionA,conditionB} ``` (example: ``` --reads vast_projet/nuak_son_fastq/{pLKO,SH1}*_{1,2}.fastq.gz```).  
+
 The groups file contains the names of the fastq files as first column (example: 5Y_siDDX5_17_B1 for 5Y_siDDX5_17_B1_R1_cutadapt_match.fastq.gz). The second column contains condition IDs (groupA and groupB).
 
 The nextflow pipeline generate two final files, namely **final_INCLUSION_FILE.DIFF.txt** for the differential alternative splicing analysis, and the **DiffGE.tab** for the differential expression analysis (with the --expr option).
