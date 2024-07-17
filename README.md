@@ -33,7 +33,7 @@ nextflow run /Xnfs/abc/nf_scratch/mmarchand/vast_projet/vast_tools.nf \
 --expr 'yes'
 ```
 
-Please use ```_``` after ```*``` for the paths of the fastq files. If the directory contains more fastq files than those of interest, you can use ``` {conditionA,conditionB} ``` (example: ``` --reads vast_projet/nuak_son_fastq/{pLKO,SH1}*_{1,2}.fastq.gz```).  
+Please use ```_``` after ```*``` for the paths of the fastq files. If the directory contains more fastq files than those of interest, you can create a new directory with symbolic link directing to the fastq files of interest. 
 
 The groups file contains the names of the fastq files as first column (example: 5Y_siDDX5_17_B1 for 5Y_siDDX5_17_B1_R1_cutadapt_match.fastq.gz). The second column contains condition IDs (groupA and groupB).
 

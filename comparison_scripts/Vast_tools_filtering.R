@@ -1,7 +1,7 @@
 #############################Inputs
-path_to_vast_out <- "~/stage/vast/vast_out_hg19/"
-output_path <- "~/stage/results_hg19/" 
-reference_genome <- "hg19"
+path_to_vast_out <- "~/stage/vast/vast_out_hg38/"
+output_path <- "~/stage/results_hg38/" 
+reference_genome <- "hg38"
 number_of_sample <- "6" #total from all the conditions
 conserve_events_without_coordinates <- "yes" #("yes"/"no") WARNING: if "yes", the identify_common_events.py script can encounter errors. 
 #############################

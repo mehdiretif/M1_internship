@@ -22,7 +22,7 @@ process expr {
     a=\$(grep ${params.groupA} ${params.groups} | cut -f 1 |  sed "s/\$/${params.diff_variable}/" | paste -d, -s)
 	b=\$(grep ${params.groupB} ${params.groups} | cut -f 1 |  sed "s/\$/${params.diff_variable}/" | paste -d, -s)
 	
-    vast-tools compare_expr vast_out/$cRPKM_and_count_tab -a "\$a" -b "\$b" -name_A ${params.groupA} -name_B ${params.groupB}
+    vast-tools compare_expr vast_out/$cRPKM_and_count_tab -a "\$a" -b "\$b" -name_A ${params.groupA} -name_B ${params.groupB} --norm
     """
 
 }
