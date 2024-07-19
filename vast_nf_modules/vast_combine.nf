@@ -1,5 +1,5 @@
 process combine_process {
-	container "marchandrm/vast-tools:2.5.1"
+	container "marchandrm/vast-tools_limma:2.5.1"
 	label "multi_thread"
 	publishDir params.output, mode: 'copy'
 

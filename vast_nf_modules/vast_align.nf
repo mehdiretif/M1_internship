@@ -1,7 +1,7 @@
 process align {
 	tag "$pair_id"
 	label "multi_thread"	
-	container "marchandrm/vast-tools:2.5.1"
+	container "marchandrm/vast-tools_limma:2.5.1"
 	publishDir params.output, mode: 'copy'
 	
 	input:

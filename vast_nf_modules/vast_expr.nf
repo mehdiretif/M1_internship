@@ -1,5 +1,5 @@
 process expr {
-    container "marchandrm/vast-tools:2.5.1"
+    container "marchandrm/vast-tools_limma:2.5.1"
 	label "multi_thread"	
 	publishDir params.output, mode: 'copy'
 
@@ -20,7 +20,7 @@ process expr {
 	mv -t vast_out/. $cRPKM_and_count_tab $count_tab $cRPKM_tab
 
     a=\$(grep ${params.groupA} ${params.groups} | cut -f 1 |  sed "s/\$/${params.diff_variable}/" | paste -d, -s)
-	b=\$(grep ${params.groupB} ${params.groups} | cut -f 1 |  sed "s/\$/${params.diff_variable}/" | paste -d, -s)
+    b=\$(grep ${params.groupB} ${params.groups} | cut -f 1 |  sed "s/\$/${params.diff_variable}/" | paste -d, -s)
 	
     vast-tools compare_expr vast_out/$cRPKM_and_count_tab -a "\$a" -b "\$b" -name_A ${params.groupA} -name_B ${params.groupB} --norm
     """
