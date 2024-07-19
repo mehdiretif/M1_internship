@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: 2024 Marchand Mehdi <mehdi.retif@gmail.com>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
 #!/usr/bin/env nextflow
 
 log.info "VAST-TOOLS NF"

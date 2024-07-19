@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2024 Marchand Mehdi <mehdi.retif@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 #############################Inputs
 path_to_vast_out <- "~/stage/vast/vast_out_SH43_pLKO/"
 output_path <- "~/stage/results_SH43_pLKO/" 

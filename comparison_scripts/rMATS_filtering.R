@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2024 Marchand Mehdi <mehdi.retif@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 ############################Inputs
 path_to_rmats_raw_results_directory <- "~/stage/rmats/"
 output_path <- "~/stage/results_hg19/" 

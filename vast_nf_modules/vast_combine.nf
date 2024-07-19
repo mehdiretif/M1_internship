@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: 2024 Marchand Mehdi <mehdi.retif@gmail.com>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-or-later
+ */
+
 process combine_process {
 	container "marchandrm/vast-tools_limma:2.5.1"
 	label "multi_thread"

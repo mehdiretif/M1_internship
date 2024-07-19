@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
+# SPDX-FileCopyrightText: 2024 Marchand Mehdi <mehdi.retif@gmail.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 import sys
 
 def reading_file(path):
